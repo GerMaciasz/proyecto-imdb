@@ -30,6 +30,7 @@ function Home() {
                 overview: movie.overview,
                 poster_path: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
             }))
+            
             console.log(frist12Results);
             setUpcoming(frist12Results);
             console.log(upComing)
