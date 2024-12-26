@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 
@@ -7,32 +7,45 @@ import { useNavigate } from "react-router-dom";
 function CarruselComponent({upComing}) {
     const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const timerRef = useRef(null);
+
+    const resetTimer = () =>{
+        if (timerRef.current) {
+            clearInterval(timerRef.current)
+        }
+        timerRef.current = setInterval(() => {
+            setCurrentIndex((prevIndex) =>
+              prevIndex === upComing.length - 1 ? 0 : prevIndex + 1
+            );
+          }, 3000);
+        
+    }
+
     useEffect(() => {
         if (upComing.length === 0) return;
     
-        const timer = setInterval(() => {
-            setCurrentIndex((prevIndex) => 
-            prevIndex === upComing.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 3000);
+        resetTimer()
     
-        return () => clearInterval(timer);
+        return () => clearInterval(timerRef.current);
         }, [upComing.length]);
     
         const goToSlide = (index) => {
         setCurrentIndex(index);
+        resetTimer()
         };
     
         const goToPrevious = () => {
         setCurrentIndex((prevIndex) => 
             prevIndex === 0 ? upComing.length - 1 : prevIndex - 1
         );
+        resetTimer()
         };
     
         const goToNext = () => {
         setCurrentIndex((prevIndex) => 
             prevIndex === upComing.length - 1 ? 0 : prevIndex + 1
         );
+        resetTimer()
         };
     
         if (upComing.length === 0) {

@@ -51,12 +51,10 @@ function NavBarComponent() {
       <nav className="bg-[#121212] text-white w-full flex items-center h-12 md:h-14">
       <div className="w-full flex justify-center">
         <div className="max-w-[1280px] w-full flex items-center px-2 md:px-3 gap-1 md:gap-2">
-          {/* Logo */}
           <div className="bg-[#f5c518] text-black font-bold px-2 md:px-3 py-1 rounded hover:opacity-90 text-sm md:text-base">
             IMDb
           </div>
 
-          {/* Home Button - Hide text on mobile */}
           <button 
             className="flex items-center gap-1 hover:bg-[#252525] px-1 md:px-2 py-1 rounded text-sm"
             onClick={() => navigate(`/`)}
@@ -67,15 +65,11 @@ function NavBarComponent() {
             <span className="hidden md:inline">Inicio</span>
           </button>
 
-          {/* Search Section */}
           <div className="relative flex items-center flex-1 h-7 md:h-8">
-            {/* Select - Hide on mobile */}
             <select className="hidden md:block bg-[#252525] text-white px-2 py-1 text-sm rounded-l border-r border-gray-700 focus:outline-none h-full">
               <option>Todo</option>
               <option>Títulos</option>
             </select>
-            
-            {/* Search Input */}
             <input 
               type="search"
               placeholder="Buscar en IMDb"
@@ -83,16 +77,14 @@ function NavBarComponent() {
               value={query}
               onChange={inputChange}
               onFocus={() => setShowDropdown(true)}
+              onClick={() => setShowDropdown(false)}
             />
             
-            {/* Search Button */}
             <button className="bg-[#252525] px-2 md:px-3 h-full hover:bg-[#303030]">
               <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </button>
-
-            {/* Dropdown Results */}
             {showDropdown && query && (
               <div 
                 className="absolute top-full left-0 w-full bg-[#1f1f1f] mt-1 rounded shadow-lg z-50"
@@ -121,8 +113,6 @@ function NavBarComponent() {
               </div>
             )}
           </div>
-
-          {/* Language Button */}
           <button className="hover:bg-[#252525] px-1 md:px-2 py-1 rounded text-xs md:text-sm">
             ES
           </button>
