@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* index.css */
-body {
+html, body {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior: none;
   margin: 0;
   padding: 0;
-  background-color: #111827;
 }
