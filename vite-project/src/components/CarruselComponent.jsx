@@ -15,9 +15,9 @@ function CarruselComponent({upComing}) {
         }
         timerRef.current = setInterval(() => {
             setCurrentIndex((prevIndex) =>
-              prevIndex === upComing.length - 1 ? 0 : prevIndex + 1
+                prevIndex === upComing.length - 1 ? 0 : prevIndex + 1
             );
-          }, 3000);
+        }, 3000);
         
     }
 
